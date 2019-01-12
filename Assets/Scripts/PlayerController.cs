@@ -27,11 +27,11 @@ public class PlayerController : MonoBehaviour {
 
 	private void Update()
 	{
-		if (Input.GetButton("Fire1") && Time.time > nextFire)
+		if ((Input.GetButton("Fire1") || Input.GetKeyDown("space")) && Time.time > nextFire)
 		{
 			nextFire = Time.time + fireRate;
-			GameObject clone =
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			GameObject clone = Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			GetComponent<AudioSource>().Play();
 		}
 	}
 
